@@ -1,0 +1,26 @@
+<html>
+    <head></head>
+    <body>
+        <div id="test"></div>
+        <script>
+            const url = `https://shojocrush.com/the-grand-duke-is-mine-chapter-1/`
+            const request = new Request(url);
+            request.mode = "no-cors";
+            let pages = [];
+            fetch(request).then(async data => {
+                const asText = await data2.text();
+                let div = document.createElement("div");
+                div.innerHTML = asText;
+                div.querySelector(`div#readerarea`).querySelectorAll("img").forEach(img => {
+                    if(!!!img.src) return;
+                    pages.push(img.src);
+                })
+                let container = document.getElementById("test");
+                pages.forEach(page => {
+                    let img = container.appendChild(document.createElement("img"));
+                    img.src = page;
+                })
+            })
+        </script>
+    </body>
+</html>
